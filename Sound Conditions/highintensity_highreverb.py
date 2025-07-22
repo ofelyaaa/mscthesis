@@ -6,10 +6,6 @@ import os
 from scipy.signal import convolve
 import simpleaudio as sa
 
-
-os.chdir("/Users/ofelyaaliyeva/Desktop")
-
-# Load audio file
 sound = AudioSegment.from_wav("ClassroomNoise.wav")
 samples = np.array(sound.get_array_of_samples()).astype(np.float32)
 sample_rate = sound.frame_rate
