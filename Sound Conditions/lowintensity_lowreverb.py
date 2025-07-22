@@ -46,7 +46,7 @@ def normalize_rms(signal_array, target_rms=0.00056):
 
 # --- Process audio to reduce reverb lightly and normalize volume
 processed = reduce_reverb_light(samples, sample_rate)
-processed = normalize_rms(processed, target_rms=0.00056)  # Adjust for 65 dB SPL
+processed = normalize_rms(processed, target_rms=0.00056)  # Adjust for 35 dB SPL
 
 # Confirm new RMS and SPL
 rms = np.sqrt(np.mean(processed ** 2))
