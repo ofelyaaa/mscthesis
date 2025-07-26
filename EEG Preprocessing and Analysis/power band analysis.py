@@ -24,7 +24,6 @@ USE_CACHE = True
 cache_file = os.path.join(output_path, 'bandpower_results_full.csv')
 
 # --- Participant Info ---
-# --- Participant Info ---
 P_NUMBERS = [2, 3, 4, 5, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 GROUP_MAPPING = {
     2: 'non-ADHD', 3: 'non-ADHD', 4: 'ADHD', 5: 'non-ADHD', 7: 'non-ADHD', 8: 'non-ADHD',
@@ -95,7 +94,7 @@ def calculate_band_power(data, sfreq, bands):
 
 
 # =============================================================================
-# === 3. DATA LOADING & PROCESSING (WITH CACHING) ===
+# === 3. DATA LOADING & PROCESSING ===
 # =============================================================================
 print(f"Loading custom montage from: {montage_path}")
 try:
