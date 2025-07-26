@@ -265,4 +265,3 @@ if raw_clean.annotations and len(raw_clean.annotations) > 0:
 cleaned_fname = os.path.join(base_data_path, f'Participant{p_num}_cleaned_raw.fif')
 raw_clean.save(cleaned_fname, overwrite=True)
 print(f"\n✅ Preprocessing complete. Cleaned data saved to:\n{cleaned_fname}")
-    print("Warning: No events found. Not cropping data.")
