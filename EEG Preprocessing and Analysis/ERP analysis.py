@@ -30,8 +30,8 @@ from mne.stats import ttest_ind_no_p
 
 # === 1. CONFIGURATION ===
 # --- Path Configuration ---
-base_data_path = '/Users/ofelyaaliyeva/Desktop/MSc_Thesis/EEGData'
-output_path = '/Users/ofelyaaliyeva/Desktop/MSc_Thesis/EEG_Analysis_Results_Python/ERP_Results'
+base_data_path = ''
+output_path = ''
 os.makedirs(output_path, exist_ok=True)
 
 # --- Caching Configuration ---
@@ -62,7 +62,6 @@ REJECT_CRITERIA = dict(eeg=100e-6)
 
 # --- Plotting Configuration ---
 # This list is used by create_erp_visualizations, which creates a combined Fz, Cz, Pz plot.
-# The individual channel plots will define their channels directly.
 ERP_CHANNELS_TO_PLOT = ['Fz', 'Cz', 'Pz']
 PLOT_INDIVIDUAL_LEGENDS = True
 
@@ -123,7 +122,7 @@ def get_condition_segments(raw, condition_labels):
 
 
 # =============================================================================
-# === 3. MAIN DATA PROCESSING (Resting-state logic removed) ===
+# === 3. MAIN DATA PROCESSING ===
 # =============================================================================
 def process_erp_data(common_channels):
     participant_evokeds = defaultdict(dict)
@@ -193,9 +192,6 @@ def create_erp_visualizations(grand_averages):
         fig[0].savefig(os.path.join(output_path, f'erp_waveform_{cond_key.replace("/", "_")}.png'), dpi=300)
         plt.close(fig[0])
 
-
-# This function remains as is, for specific channels like Oz and Fz if you want *only* that channel.
-# The plot_individual_channel_erp_comparisons below will handle individual Fz, Cz, Pz, Oz more broadly.
 def plot_channel_specific_comparison(grand_averages, channel_to_plot, output_path):
     print(f"\n--- Generating comparison plots for a single channel: '{channel_to_plot}' ---")
     ga_non_adhd = grand_averages.get('non-ADHD', {})
@@ -281,8 +277,6 @@ def plot_gfp_with_individual_participants(participant_evokeds, grand_averages, o
         plt.close(fig)
     print("  ...GFP plots saved.")
 
-
-# REPLACED plot_holistic_erp_summary with this function for individual channel saving
 def plot_individual_channel_erp_comparisons(grand_averages, output_path):
     print("\n" + "=" * 80 + "\n--- GENERATING INDIVIDUAL CHANNEL ERP COMPARISON PLOTS (Fz, Cz, Pz, Oz) ---\n" + "=" * 80)
     # Define the list of channels to plot individually
@@ -323,7 +317,6 @@ def plot_individual_channel_erp_comparisons(grand_averages, output_path):
     print("\n--- All individual channel ERP plots saved. ---")
 
 
-# NEW FUNCTION FOR THE SPECIFIC 2x2 PLOT REQUEST
 def plot_specific_2x2_erp_summary(grand_averages, output_path):
     print("\n" + "=" * 80 + "\n--- GENERATING SPECIFIC 2x2 ERP SUMMARY PLOT (Fz, Oz for High Intensity/Reverb & White Noise) ---\n" + "=" * 80)
 
@@ -506,7 +499,6 @@ def run_erp_statistics(participant_evokeds, info_template):
         print(f"Adjacency setup failed: {e}. Cannot run cluster stats.");
         return
 
-    # --- ADDED: Calculate a more reasonable t-threshold ---
     # We use the t-value corresponding to p=0.05 for a two-tailed test.
     from scipy import stats
     # Degrees of freedom will be (n_adhd - 1) + (n_non_adhd - 1)
@@ -568,7 +560,7 @@ def run_erp_statistics(participant_evokeds, info_template):
             plt.close(fig)
 
 
-# === 6. STATISTICS (PEAK METRICS) ===
+# === 6. STATISTICS (ERP METRICS) ===
 def calculate_peak_metrics(participant_evokeds):
     print("\n" + "=" * 80 + "\n--- GENERATING PEAK METRICS DATA FOR R ANALYSIS ---\n" + "=" * 80)
     analyses_to_run = [
