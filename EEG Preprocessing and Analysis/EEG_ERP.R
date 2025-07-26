@@ -12,8 +12,8 @@ library(lmerTest)
 library(emmeans)
 library(ggrepel)
 library(ggplot2)
-library(rstatix) # Still useful for data manipulation
-library(afex)    # For efficient ANOVA (replacing BayesFactor)
+library(rstatix)
+library(afex)
 
 # --- Configuration ---
 input_csv_path <- ""
