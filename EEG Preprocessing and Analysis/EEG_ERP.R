@@ -1,8 +1,5 @@
 # ===================================================================
-# R SCRIPT FOR PEAK METRICS ANALYSIS (LATENCY & AMPLITUDE)
-# - Includes lmer models, ANOVA using afex package,
-# and labeled plots.
-# - Analyzes GFP, Oz, and Fz metrics, and new custom peaks.
+# R SCRIPT FOR ERP SIGNIFICANCE TESTS (LATENCY & AMPLITUDE)
 # ===================================================================
 
 # 1. SETUP
@@ -19,8 +16,8 @@ library(rstatix) # Still useful for data manipulation
 library(afex)    # For efficient ANOVA (replacing BayesFactor)
 
 # --- Configuration ---
-input_csv_path <- "/Users/ofelyaaliyeva/Desktop/MSc_Thesis/EEG_Analysis_Results_Python/ERP_Results/peak_metrics_results.csv"
-output_dir <- "/Users/ofelyaaliyeva/Desktop/MSc_Thesis/EEG_Analysis_Results_Python/ERP_Results/R_Stats"
+input_csv_path <- ""
+output_dir <- ""
 dir.create(output_dir, showWarnings = FALSE)
 
 set.seed(123)
