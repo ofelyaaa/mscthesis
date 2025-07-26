@@ -13,9 +13,9 @@ from scipy.stats import ttest_rel
 # =============================================================================
 
 # --- Paths and Files ---
-base_data_path = '/Users/ofelyaaliyeva/Desktop/MSc_Thesis/EEGData'
-output_path = '/Users/ofelyaaliyeva/Desktop/MSc_Thesis/EEG_Analysis_Results_Python'
-montage_path = '/Users/ofelyaaliyeva/Desktop/MSc/EEG/eeglab2024.0/sample_locs/Standard-10-20-Cap81.locs'
+base_data_path = ''
+output_path = ''
+montage_path = 'eeglab2024.0/sample_locs/Standard-10-20-Cap81.locs'
 os.makedirs(output_path, exist_ok=True)
 
 # --- Caching Configuration ---
