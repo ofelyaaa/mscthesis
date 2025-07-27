@@ -9,7 +9,7 @@ This script performs a complete ERP analysis pipeline:
 4.  Calculates and plots grand-average ERPs for different groups (ADHD vs. non-ADHD).
 5.  Plots channel-specific comparisons (e.g., 'Oz').
 6.  Plots Global Field Power (GFP) with individual participant overlays.
-7.  Creates a summary image of topoplots at the peak GFP for all conditions and groups in a HORIZONTAL layout.
+7.  Creates a summary image of topoplots at the peak GFP for all conditions and groups.
 8.  Performs cluster-based permutation statistics to find group differences.
 9.  Calculates peak latency and amplitude for specific channels and the GFP.
 10. Saves all plots and statistical results to an output directory.
